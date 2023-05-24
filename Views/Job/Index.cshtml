@@ -1,0 +1,30 @@
+﻿@using EntityLayer.Concrete
+@model List<Job>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+<br />
+<h1>Meslekler Tablosu</h1>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Meslek Adı</th>
+        <th>Detaylar</th>
+        <th>Silme</th>
+        <th>Güncelleme</th>
+    </tr>
+    @foreach (Job job in Model)
+    {
+        <tr>
+            <td>@job.JobID</td>
+            <td>@job.JobName</td>
+            <td><a href="/Job/DetailsJob/@job.JobID" class="btn btn-outline-info">Görüntüle</a></td>
+            <td><a href="/Job/DeleteJob/@job.JobID" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Job/UpdateJob/@job.JobID" class="btn btn-outline-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Job/AddJob/" class="btn btn-primary">Meslek Ekle</a>
+
